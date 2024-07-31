@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # add winswitch repository and install Xpra
 RUN apt-get update --allow-insecure-repositories && \
-    apt-get install wireshark git libwireshark-dev wireshark-dev python3 python3-pip -y && \
+    apt-get install wireshark -y && \
     # binutils are necessary to use strip utility
     apt-get install -y --no-install-recommends binutils && \
     # this is required due to incompatibilities on Centos 7 hosts see issue #4 for details
@@ -24,7 +24,7 @@ RUN setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 ENV XPRA_PASSWORD wireshark
 
 RUN apt-get update --allow-insecure-repositories && \
-    apt-get install cmake git libwireshark-dev wireshark-dev python3 python3-pip -y
+    apt-get install libwireshark-dev wireshark-dev cmake git python3 python3-pip -y
 
 WORKDIR /opt
 
